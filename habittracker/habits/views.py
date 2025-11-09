@@ -72,7 +72,7 @@ def add_record(request, habit_id):
 @login_required
 def habit_detail(request, habit_id):
     habit = get_object_or_404(Habit, id=habit_id, user = request.user)
-    records = HabitRecord.object.filer(habit=habit).order_by('-date')
+    records = HabitRecord.objects.filter(habit=habit).order_by('-date')
     return render(request, 'habits/habit_detail.html', {'habit': habit, 'records': records})
 
 # Progress Page

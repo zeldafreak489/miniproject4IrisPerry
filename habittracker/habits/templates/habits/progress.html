@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Progress{% endblock %}
+{% block content %}
+<h2>Your Progress</h2>
+<table class="table table-striped">
+  <thead><tr><th>Habit</th><th>Times Completed</th></tr></thead>
+  <tbody>
+    {% for row in data %}
+      <tr><td>{{ row.habit__name }}</td><td>{{ row.times_done }}</td></tr>
+    {% empty %}
+      <tr><td colspan="2">No data yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

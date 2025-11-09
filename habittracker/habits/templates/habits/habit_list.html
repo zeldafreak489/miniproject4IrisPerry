@@ -1,19 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Habit Tracker</title>
-    </head>
-    <body>
-        <h1>Habit Tracker</h1>
-        <ul>
-            {% for habit in habits %}
-                <li>
-                    {{ habit.name }} - 
-                    <a href="{% url 'add_record' habit.id %}">Mark Completed Today</a>
-                </li>
-            {% empty %}
-                <li>No habits yet!</li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Habits{% endblock %}
+{% block content %}
+<h2>Your Habits</h2>
+
+<ul class="list-group mb-3">
+  {% for habit in habits %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="{% url 'habit_detail' habit.id %}">{{ habit.name }}</a>
+      <a href="{% url 'add_record' habit.id %}" class="btn btn-success btn-sm">Mark Done</a>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No habits yet!</li>
+  {% endfor %}
+</ul>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addHabitModal">
+  Add New Habit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addHabitModal" tabindex="-1" aria-labelledby="addHabitModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" action="{% url 'add_habit' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="addHabitModalLabel">Add Habit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          {{ form.as_p }}
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
