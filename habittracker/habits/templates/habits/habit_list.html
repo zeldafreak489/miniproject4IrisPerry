@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Habit Tracker</title>
+    </head>
+    <body>
+        <h1>Habit Tracker</h1>
+        <ul>
+            {% for habit in habits %}
+                <li>
+                    {{ habit.name }} - 
+                    <a href="{% url 'add_record' habit.id %}">Mark Completed Today</a>
+                </li>
+            {% empty %}
+                <li>No habits yet!</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
