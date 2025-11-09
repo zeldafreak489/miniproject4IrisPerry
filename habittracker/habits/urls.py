@@ -1,3 +1,7 @@
+# INF601 - Advanced Programming in Python
+# Iris Perry
+# Mini Project 4
+
 from django.urls import path
 from . import views
 
