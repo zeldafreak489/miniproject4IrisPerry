@@ -12,7 +12,7 @@ class Habit(models.Model):
     
 class HabitRecord(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE)
-    date = models.DateField(default=timezone.now)
+    completed_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.habit.name} - {self.date}"
+        return f"{self.habit.name} - {self.completed_at.strftime('%Y-%m-%d $H:$M:%S')}"
