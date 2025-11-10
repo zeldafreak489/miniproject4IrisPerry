@@ -46,7 +46,7 @@ habittracker/
  
 ### Executing program
 
-1. Change director to habittracker:
+1. Change directory to habittracker:
 ```bash
 cd habittracker
 ``` 
@@ -89,7 +89,6 @@ Iris Perry
     * Initial Release
  
 ## Acknowledgments
- 
-Inspiration, code snippets, etc.
+
 * [Django Documentation](https://docs.djangoproject.com/en/5.2/)
 * [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
